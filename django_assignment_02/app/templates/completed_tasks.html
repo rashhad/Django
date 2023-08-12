@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Completed Tasks{% endblock title %}
+{% block content %}
+{% if data %}
+<h1>Completed Tasks:</h1>
+<table class="table table-hover table-bordered align-middle">
+  <thead>
+    <tr class="align-middle">
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+    </tr>
+      </thead>
+      <tbody>
+        {% for item in data %}
+            <tr>
+                <td>{{item.taskTitle}}</td>
+                <td>{{item.taskDescription}}</td>
+                <td>Completed</td>
+                {% comment %} <td><a class='btn btn-danger' href="{% url 'del' item.id %}">Delete</a></td> {% endcomment %}
+                {% comment %} <td><a class='btn btn-danger' href="{% url 'edi' st.id %}">Edit</a></td> {% endcomment %}
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <h1>No Completed Tasks To Show</h1>
+{% endif %}
+{% endblock content %}
